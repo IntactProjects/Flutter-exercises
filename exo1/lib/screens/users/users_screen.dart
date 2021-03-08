@@ -5,21 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'add_user_toolbar.dart';
 
-class UsersScreen extends StatefulWidget {
-  @override
-  _UsersScreenState createState() => _UsersScreenState();
-}
-
-class _UsersScreenState extends State<UsersScreen> {
+class UsersScreen extends StatelessWidget {
   final _repository = UserRepository.get();
-
-  late List<User> users;
-
-  @override
-  void initState() {
-    super.initState();
-    users = _repository.getUsers();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +17,21 @@ class _UsersScreenState extends State<UsersScreen> {
       body: Column(
         children: [
           Flexible(
-            child: UserListWidget(users: users),
+            child: StreamBuilder<List<User>>(
+              stream: _repository.observeUsers(),
+              builder: (context, snapshot) {
+                final users = snapshot.data;
+                return users != null
+                    ? UserListWidget(users: users)
+                    : Center(child: CircularProgressIndicator.adaptive());
+              },
+            ),
           ),
-          AddUserToolbar(onUserSubmitted: addUser),
+          AddUserToolbar(
+            onUserSubmitted: (user) => _repository.addUser(user),
+          ),
         ],
       ),
     );
-  }
-
-  void addUser(User user) {
-    _repository.addUser(user);
-    setState(() {
-      users = _repository.getUsers();
-    });
   }
 }
