@@ -5,15 +5,25 @@ class UserListWidget extends StatelessWidget {
   const UserListWidget({
     Key? key,
     required this.users,
+    this.onUserDismissed,
   }) : super(key: key);
 
   final List<User> users;
+  final ValueSetter<User>? onUserDismissed;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: users.length,
-      itemBuilder: (context, index) => UserListItem(user: users[index]),
+      itemBuilder: (context, index) {
+        var user = users[index];
+        return Dismissible(
+          key: Key(user.name),
+          background: Container(color: Colors.red),
+          child: UserListItem(user: user),
+          onDismissed: (direction) => onUserDismissed?.call(user),
+        );
+      },
     );
   }
 }

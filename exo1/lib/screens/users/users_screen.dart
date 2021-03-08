@@ -22,7 +22,10 @@ class UsersScreen extends StatelessWidget {
               builder: (context, snapshot) {
                 final users = snapshot.data;
                 return users != null
-                    ? UserListWidget(users: users)
+                    ? UserListWidget(
+                        users: users,
+                        onUserDismissed: (user) => _repository.deleteUser(user),
+                      )
                     : Center(child: CircularProgressIndicator.adaptive());
               },
             ),
