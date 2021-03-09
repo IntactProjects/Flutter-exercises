@@ -38,6 +38,7 @@ class _AddUserToolbarState extends State<AddUserToolbar> {
                   }
                 });
               },
+              onSubmitted: (_) => addAction?.call(),
             ),
           ),
           ElevatedButton.icon(
