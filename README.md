@@ -3,6 +3,7 @@
 ## Exercises
 
 - [Exercise 1](../master/exo1/README.md) - Learn the basics about state management
+- [Exercise 2](../master/exo2/README.md) - Learn about layout composition, navigation, WS calls and Google Maps integration
 
 ## Some essentials Widgets 
 

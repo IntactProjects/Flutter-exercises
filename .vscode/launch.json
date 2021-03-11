@@ -7,7 +7,22 @@
         {
             "name": "exo1",
             "request": "launch",
-            "type": "dart"
-        }
+            "type": "dart",
+            "program": "exo1/lib/main.dart",
+        },
+        {
+            "name": "exo2 - debug",
+            "request": "launch",
+            "type": "dart",
+            "program": "exo2/lib/main.dart",
+            "flutterMode": "debug",
+        },
+        {
+            "name": "exo2 - release",
+            "request": "launch",
+            "type": "dart",
+            "program": "exo2/lib/main.dart",
+            "flutterMode": "release"
+        },
     ]
 }
