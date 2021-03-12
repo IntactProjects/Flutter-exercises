@@ -10,14 +10,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Agencies',
-        theme: ThemeData(
-          primarySwatch: Colors.orange,
-        ),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => DashboardScreen(),
-          '/agency': (context) => AgencyDetailsNavigation.createScreen(context)
-        });
+      title: 'Agencies',
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
+      ),
+      initialRoute: '/',
+      onGenerateRoute: (settings) {
+        if (settings.name == '/') {
+          return MaterialPageRoute(
+            settings: settings,
+            builder: (context) => DashboardScreen(),
+          );
+        }
+
+        var uri = Uri.parse(settings.name!);
+        if (AgencyDetailsNavigation.matches(uri)) {
+          return MaterialPageRoute(
+            settings: settings,
+            builder: (context) => AgencyDetailsNavigation.load(context, uri),
+          );
+        }
+      },
+    );
   }
 }
