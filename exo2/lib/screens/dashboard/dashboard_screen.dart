@@ -23,13 +23,18 @@ class DashboardScreen extends StatelessWidget {
         ),
         body: FutureBuilder<List<Agency>>(
           future: AgencyRepository.get().getAgencies(),
-          builder: (context, snapshot) => TabBarView(children: [
-            ListScreen(
-              agencies: snapshot.data,
-              onAgencyClicked: (agency) => _openAgencyDetails(context, agency),
-            ),
-            MapScreen(agencies: snapshot.data),
-          ]),
+          builder: (context, snapshot) => TabBarView(
+            // Disable scroll on TabBar to prevent conflict with the map
+            physics: NeverScrollableScrollPhysics(),
+            children: [
+              ListScreen(
+                agencies: snapshot.data,
+                onAgencyClicked: (agency) =>
+                    _openAgencyDetails(context, agency),
+              ),
+              MapScreen(agencies: snapshot.data),
+            ],
+          ),
         ),
       ),
     );
