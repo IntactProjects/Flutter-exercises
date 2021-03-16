@@ -1,5 +1,6 @@
 import 'package:exo2/domain/agency.dart';
 import 'package:exo2/domain/agency_repository.dart';
+import 'package:exo2/screens/details/agency_details_navigation.dart';
 import 'package:flutter/material.dart';
 
 import 'list/list_screen.dart';
@@ -35,6 +36,6 @@ class DashboardScreen extends StatelessWidget {
   }
 
   void _openAgencyDetails(BuildContext context, Agency agency) {
-    // TODO Go to AgencyDetailsScreen
+    AgencyDetailsNavigation.push(context, agency);
   }
 }
