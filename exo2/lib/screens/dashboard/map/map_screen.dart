@@ -4,6 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import 'map_utils.dart';
+
 class MapScreen extends StatefulWidget {
   static final _initialPos = CameraPosition(
     target: LatLng(45.77019119262695, 4.837228298187256),
@@ -15,6 +17,9 @@ class MapScreen extends StatefulWidget {
 
   @override
   _MapScreenState createState() => _MapScreenState();
+
+  LatLngBounds get _bounds => boundsFromLatLngList(
+      (agencies ?? []).map((e) => e.position).toList().cast());
 }
 
 class _MapScreenState extends State<MapScreen>
@@ -42,7 +47,11 @@ class _MapScreenState extends State<MapScreen>
     }
   }
 
-  void _configureMap(GoogleMapController controller) {}
+  void _configureMap(GoogleMapController controller) {
+    controller.animateCamera(
+      CameraUpdate.newLatLngBounds(widget._bounds, 16),
+    );
+  }
 
   Marker _createMarker(Agency agency) => Marker(
         markerId: MarkerId(agency.id.toString()),
