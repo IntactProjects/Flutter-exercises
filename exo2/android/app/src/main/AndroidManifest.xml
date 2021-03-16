@@ -4,6 +4,9 @@
     <application
         android:label="exo2"
         android:icon="@mipmap/ic_launcher">
+        <meta-data 
+            android:name="com.google.android.geo.API_KEY" 
+            android:value="AIzaSyB0_z7TX7gwWptMi7CaPc5WMKyNtGzJO08"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

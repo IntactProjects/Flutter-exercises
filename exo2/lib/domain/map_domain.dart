@@ -1,3 +1,4 @@
+/*
 import 'dart:typed_data';
 
 // Replace all content of this file with
@@ -25,3 +26,7 @@ class BitmapDescriptor {
     return BitmapDescriptor._();
   }
 }
+*/
+
+// Replace our domain LatLng with the one provided by Google Maps
+export 'package:google_maps_flutter/google_maps_flutter.dart';
