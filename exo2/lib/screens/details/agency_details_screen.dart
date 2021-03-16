@@ -1,4 +1,5 @@
 import 'package:exo2/domain/agency.dart';
+import 'package:exo2/utils/hero_utils.dart';
 import 'package:exo2/utils/lorem_fetcher.dart';
 import 'package:flutter/material.dart';
 
@@ -17,15 +18,18 @@ class AgencyDetailsScreen extends StatelessWidget {
           padding: EdgeInsets.all(16),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Image.asset(agency.company.logo, width: 56),
-                  SizedBox(width: 8),
-                  Text(
-                    agency.city,
-                    style: textTheme.headline4,
-                  ),
-                ],
+              Hero(
+                tag: getHeroTag(agency, 'title'),
+                child: Row(
+                  children: [
+                    Image.asset(agency.company.logo, width: 56),
+                    SizedBox(width: 8),
+                    Text(
+                      agency.city,
+                      style: textTheme.headline4,
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 16),
               FutureBuilder<List<String>>(
