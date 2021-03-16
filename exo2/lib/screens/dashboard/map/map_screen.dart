@@ -1,4 +1,6 @@
 import 'package:exo2/domain/agency.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -31,6 +33,9 @@ class _MapScreenState extends State<MapScreen>
         mapToolbarEnabled: false,
         markers: widget.agencies!.map((e) => _createMarker(e)).toSet(),
         onMapCreated: _configureMap,
+        gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+          Factory(() => _IgnoreBorderGestureRecognizer())
+        ].toSet(),
       );
     } else {
       return Center(child: CircularProgressIndicator.adaptive());
@@ -43,4 +48,12 @@ class _MapScreenState extends State<MapScreen>
         markerId: MarkerId(agency.id.toString()),
         position: agency.position,
       );
+}
+
+// Ignore event on the left border of the map to allow paging between tabs
+class _IgnoreBorderGestureRecognizer extends EagerGestureRecognizer {
+  @override
+  bool isPointerAllowed(PointerDownEvent event) {
+    return super.isPointerAllowed(event) && event.localPosition.dx > 100;
+  }
 }
