@@ -24,5 +24,14 @@
             "program": "exo2/lib/main.dart",
             "flutterMode": "release"
         },
+        {
+            "name": "exo2 - disable sound null-safety",
+            "request": "launch",
+            "type": "dart",
+            "program": "exo2/lib/main.dart",
+            "args": [
+                "--no-sound-null-safety"
+            ],
+        }
     ]
 }
