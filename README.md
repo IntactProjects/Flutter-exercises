@@ -5,6 +5,12 @@
 - [Exercise 1](../master/exo1/README.md) - Learn the basics about state management
 - [Exercise 2](../master/exo2/README.md) - Learn about layout composition, navigation, WS calls and Google Maps integration
 
+## Submit your work
+
+To submit your work clone the repository and checkout the work branch of the exercise (`exo1/work`, `exo2/work`, etc.). Then create a PR against this branch with the name `Exo X - My Name`, for example `Exo 1 - Nicolas P.`
+
+This PR will never be accepted (sorry :wink:) but will be used to check your work and make some feedback.
+
 ## Some essentials Widgets 
 
 - Scaffold, Container, Stack
