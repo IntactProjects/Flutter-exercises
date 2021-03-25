@@ -2,18 +2,29 @@ import 'package:exo1/domain/user.dart';
 import 'package:flutter/material.dart';
 
 class UserListWidget extends StatelessWidget {
-  const UserListWidget({
-    Key? key,
-    required this.users,
-  }) : super(key: key);
+  const UserListWidget({Key? key, required this.users, this.callback})
+      : super(key: key);
 
   final List<User> users;
+  final callback;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: users.length,
-      itemBuilder: (context, index) => UserListItem(user: users[index]),
+      itemBuilder: (context, index) {
+        final user = users[index];
+        return Dismissible(
+          key: UniqueKey(),
+          onDismissed: (direction) {
+            callback(user);
+          },
+          background: Container(
+            color: Colors.red, 
+            ),
+          child: UserListItem(user: user),
+        );
+      },
     );
   }
 }
