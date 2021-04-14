@@ -1,5 +1,6 @@
 import 'package:exo2/domain/agency.dart';
 import 'package:flutter/material.dart';
+import 'agency_list_item.dart';
 
 class ListScreen extends StatelessWidget {
   final List<Agency>? agencies;
@@ -10,6 +11,13 @@ class ListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    if (agencies != null) {
+      return ListView.builder(
+        itemCount: agencies!.length,
+        itemBuilder: (context, index) => AgencyListItem(agencies![index]),
+      );
+    } else {
+      return Placeholder();
+    }
   }
 }
