@@ -1,5 +1,7 @@
 import 'package:exo2/domain/agency.dart';
+import 'package:exo2/main.dart';
 import 'package:flutter/material.dart';
+import 'package:exo2/screens/details/agency_details_arguments.dart';
 
 class AgencyListItem extends StatelessWidget {
   final Agency _agency;
@@ -10,11 +12,16 @@ class AgencyListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        onTap: () {},
+        onTap: () => _onItemTap(context, _agency),
         title: Text(_agency.city),
         leading: Image.asset(_agency.company.logo),
         subtitle: Text(_agency.company.label),
       ),
     );
+  }
+
+  _onItemTap(BuildContext context, Agency agency) {
+    Navigator.pushNamed(context, AgencyDetailsRoute,
+        arguments: AgencyDetailsArguments(agency));
   }
 }
