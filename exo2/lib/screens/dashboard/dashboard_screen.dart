@@ -23,18 +23,11 @@ class DashboardScreen extends StatelessWidget {
         body: FutureBuilder<List<Agency>>(
           future: AgencyRepository.get().getAgencies(),
           builder: (context, snapshot) => TabBarView(children: [
-            ListScreen(
-              agencies: snapshot.data,
-              onAgencyClicked: (agency) => _openAgencyDetails(context, agency),
-            ),
+            ListScreen(agencies: snapshot.data),
             MapScreen(agencies: snapshot.data),
           ]),
         ),
       ),
     );
-  }
-
-  void _openAgencyDetails(BuildContext context, Agency agency) {
-    // TODO Go to AgencyDetailsScreen
   }
 }

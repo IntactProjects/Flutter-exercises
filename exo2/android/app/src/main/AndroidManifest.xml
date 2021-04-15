@@ -3,6 +3,11 @@
     <application
         android:label="exo2"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- Google Maps API key -->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+          android:value="AIzaSyB0_z7TX7gwWptMi7CaPc5WMKyNtGzJO08"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -18,6 +23,7 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+
             <!-- Displays an Android View that continues showing the launch screen
                  Drawable until Flutter paints its first frame, then this splash
                  screen fades out. A splash screen is useful to avoid any visual
