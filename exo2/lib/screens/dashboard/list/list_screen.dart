@@ -17,7 +17,7 @@ class ListScreen extends StatelessWidget {
         itemBuilder: (context, index) => AgencyListItem(agencies![index]),
       );
     } else {
-      return Placeholder();
+      return CircularProgressIndicator();
     }
   }
 }
