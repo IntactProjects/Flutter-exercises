@@ -29,20 +29,23 @@ class AgencyDetailsScreen extends StatelessWidget {
   }
 
   Widget _cityWithLogo(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 16.0),
-      child: Container(
-        child: Row(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(right: 8.0),
-              child: Image.asset(agency.company.logo, height: 56.0),
-            ),
-            Text(
-              agency.city,
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return Hero(
+      tag: agency.id.toString(),
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 16.0),
+        child: Container(
+          child: Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(right: 8.0),
+                child: Image.asset(agency.company.logo, height: 56.0),
+              ),
+              Text(
+                agency.city,
+                style: Theme.of(context).textTheme.headline4,
+              ),
+            ],
+          ),
         ),
       ),
     );

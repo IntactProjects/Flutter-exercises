@@ -10,12 +10,15 @@ class AgencyListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        onTap: () => _onItemTap(context, _agency),
-        title: Text(_agency.city),
-        leading: Image.asset(_agency.company.logo),
-        subtitle: Text(_agency.company.label),
+    return Hero(
+      tag: _agency.id.toString(),
+      child: Material(
+        child: ListTile(
+          onTap: () => _onItemTap(context, _agency),
+          title: Text(_agency.city),
+          leading: Image.asset(_agency.company.logo),
+          subtitle: Text(_agency.company.label),
+        ),
       ),
     );
   }
