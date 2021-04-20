@@ -73,7 +73,10 @@ class AgencyDetailsScreen extends StatelessWidget {
                 .toList(),
           );
         } else {
-          return CircularProgressIndicator();
+          return Container(
+            alignment: Alignment.center,
+            child: CircularProgressIndicator(),
+          );
         }
       },
     );
