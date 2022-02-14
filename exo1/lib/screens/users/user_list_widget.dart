@@ -4,16 +4,27 @@ import 'package:flutter/material.dart';
 class UserListWidget extends StatelessWidget {
   const UserListWidget({
     Key? key,
-    required this.users,
+    required this.users, required this.deleteCallback,
   }) : super(key: key);
 
   final List<User> users;
+  final Function(User user) deleteCallback;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: users.length,
-      itemBuilder: (context, index) => UserListItem(user: users[index]),
+      itemBuilder: (context, index) {
+        final user = users[index];
+        return Dismissible(
+          key: ObjectKey(user),
+          background: Container(color: Colors.red),
+          onDismissed: (direction) {
+            deleteCallback(user);
+          },
+          child: UserListItem(user: user),
+        );
+      },
     );
   }
 }
