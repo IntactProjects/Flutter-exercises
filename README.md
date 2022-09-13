@@ -7,7 +7,12 @@
 
 ## Submit your work
 
-To submit your work clone the repository and checkout the work branch of the exercise (`exo1/work`, `exo2/work`, etc.). Then create a PR against this branch with the name `Exo X - My Name`, for example `Exo 1 - Nicolas P.`
+To submit your work:
+- Clone the repository
+- Checkout the `master` branch 
+- Go into the exercise folder (`exo1`, `exo2`, etc.)
+- Create a branch named `work/exoX-[your-name]` (for example `work/exo1-nicopico`)
+- Then create a PR against this branch with the name `Exo X - My Name`, for example `Exo 1 - Nicolas P.`
 
 This PR will never be accepted (sorry :wink:) but will be used to check your work and make some feedback.
 
